@@ -85,6 +85,7 @@ public class HDT7 {
                     while(reader.hasNext())
                     {
                         palabra = reader.next();
+                        if(palabra.contains(".")) palabra = palabra.substring(0, palabra.length()-1);
                         oracion.add(palabra);
                     }
                     
