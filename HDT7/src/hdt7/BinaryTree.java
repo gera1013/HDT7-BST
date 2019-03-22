@@ -21,6 +21,10 @@ public class BinaryTree<E>
 	parent = null; left = right = this;
     }
 	
+    /**
+     *
+     * @param value
+     */
     public BinaryTree(Association value)
     // post: returns a tree referencing value and two empty subtrees
     {
@@ -30,6 +34,12 @@ public class BinaryTree<E>
 	setRight(right);
     }
 	
+    /**
+     *
+     * @param value
+     * @param left
+     * @param right
+     */
     public BinaryTree(Association value, BinaryTree<E> left, BinaryTree<E> right)
     // post: returns a tree referencing value and two subtrees
     {
@@ -40,6 +50,10 @@ public class BinaryTree<E>
 	setRight(right);
     }
 	
+    /**
+     *
+     * @return
+     */
     public BinaryTree<E> left()
     // post: returns reference to (possibly empty) left subtree
     // post: returns reference to (possibly empty) left subtree
@@ -47,6 +61,10 @@ public class BinaryTree<E>
         return left;
     }
     
+    /**
+     *
+     * @return
+     */
     public BinaryTree<E> right()
     // post: returns reference to (possibly empty) left subtree
     // post: returns reference to (possibly empty) left subtree
@@ -54,13 +72,21 @@ public class BinaryTree<E>
         return right;
     }
 	
+    /**
+     *
+     * @return
+     */
     public BinaryTree<E> parent()
     {
         return null;
     }
     // post: returns reference to parent node, or null
 	
-    public void setLeft(BinaryTree<E> newLeft)
+    /**
+     *
+     * @param newLeft
+     */
+    private void setLeft(BinaryTree<E> newLeft)
     // post: sets left subtree to newLeft
     // re-parents newLeft if not null
     {
@@ -70,7 +96,11 @@ public class BinaryTree<E>
 	left.setParent(this);
     }
         
-    public void setRight(BinaryTree<E> newRight)
+    /**
+     *
+     * @param newRight
+     */
+    private void setRight(BinaryTree<E> newRight)
     // post: sets left subtree to newLeft
     // re-parents newLeft if not null
     {
@@ -80,6 +110,10 @@ public class BinaryTree<E>
 	right.setParent(this);
     }
 	
+    /**
+     *
+     * @param newParent
+     */
     protected void setParent(BinaryTree<E> newParent)
     // post: re-parents this node to parent reference, or null
     {
@@ -89,17 +123,31 @@ public class BinaryTree<E>
 	}*/
     }
         
+    /**
+     *
+     * @return
+     */
     public Association value()
     // post: returns value associated with this node
     {
 	return val;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isEmpty()
     {
         return this == null;
     }
     
+    /**
+     *
+     * @param root
+     * @param commands
+     * @return
+     */
     public BinaryTree addElements(BinaryTree root, ArrayList<Association> commands)
     {
         BinaryTree root2;
@@ -147,6 +195,10 @@ public class BinaryTree<E>
         return root;
     }
     
+    /**
+     *
+     * @param bst
+     */
     public void traverseInOrder(BinaryTree bst) {
         if (bst.val != null) 
         {
@@ -156,6 +208,11 @@ public class BinaryTree<E>
         }
     }
     
+    /**
+     *
+     * @param current
+     * @param value
+     */
     public void traduccion(BinaryTree current, String value) 
     {
         if (current.val != null)
@@ -172,6 +229,12 @@ public class BinaryTree<E>
         }
     }
     
+    /**
+     *
+     * @param current
+     * @param value
+     * @return
+     */
     public boolean contains(BinaryTree current, String value) 
     {
         if(current.val == null) return false;

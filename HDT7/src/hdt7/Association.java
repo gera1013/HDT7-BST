@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hdt7;
 
 /**
@@ -22,30 +17,39 @@ public class Association<K, V>
         value = v;
     }
     
+    /**
+     *
+     * @return
+     */
     public K getKey()
     {
         return key;
     }
     
+    /**
+     *
+     * @param k
+     */
     public void setKey(K k)
     {
         key = k;
     }
     
+    /**
+     *
+     * @return
+     */
     public V getValue()
     {
         return value;
     }
     
+    /**
+     *
+     * @param v
+     */
     public void setValue(V v)
     {
         value = v;
-    }
-    
-    public void display()
-    {
-        System.out.println("Key: " + String.valueOf(key));
-        System.out.println("Value: " + String.valueOf(value));
-        System.out.println("");
     }
 }
