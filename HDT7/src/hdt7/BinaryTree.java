@@ -151,15 +151,31 @@ public class BinaryTree<E>
         if (bst.val != null) 
         {
             traverseInOrder(bst.left);
-            System.out.print("(" + bst.val.getKey() + ", " + bst.val.getValue() + ")");
+            System.out.println("(" + bst.val.getKey() + ", " + bst.val.getValue() + ")");
             traverseInOrder(bst.right);
+        }
+    }
+    
+    public void traduccion(BinaryTree current, String value) 
+    {
+        if (current.val != null)
+        {
+            if(value.equals(String.valueOf(current.val.getKey())))
+            {
+                System.out.print(String.valueOf(current.val.getValue()) + " ");
+            }
+            else
+            {
+                traduccion(current.left(), value);
+                traduccion(current.right(), value);
+            }
         }
     }
     
     public boolean contains(BinaryTree current, String value) 
     {
         if(current.val == null) return false;
-        //if(value == current.val) return true;
-        return value.charAt(0) < String.valueOf(current.val).charAt(0) ? contains(current.left, value) : contains(current.right, value);
+        if(value.equals(String.valueOf(current.val.getKey()))) return true;
+        return value.charAt(0) < String.valueOf(current.val.getKey()).charAt(0) ? contains(current.left, value) : contains(current.right, value);
     }
 }
