@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class BinaryTree<E>
 {
 
-    protected E val; // value associated with node
+    protected Association val; // value associated with node
     protected BinaryTree<E> parent; // parent of node
     protected BinaryTree<E> left, right; // children of node
 	
@@ -21,7 +21,7 @@ public class BinaryTree<E>
 	parent = null; left = right = this;
     }
 	
-    public BinaryTree(E value)
+    public BinaryTree(Association value)
     // post: returns a tree referencing value and two empty subtrees
     {
 	val = value;
@@ -30,7 +30,7 @@ public class BinaryTree<E>
 	setRight(right);
     }
 	
-    public BinaryTree(E value, BinaryTree<E> left, BinaryTree<E> right)
+    public BinaryTree(Association value, BinaryTree<E> left, BinaryTree<E> right)
     // post: returns a tree referencing value and two subtrees
     {
 	val = value;
@@ -89,16 +89,10 @@ public class BinaryTree<E>
 	}*/
     }
         
-    public E value()
+    public Association value()
     // post: returns value associated with this node
     {
 	return val;
-    }
-	
-    public void setValue(E value)
-    // post: sets the value associated with this node
-    {
-        val = value;
     }
     
     public boolean isEmpty()
@@ -106,10 +100,10 @@ public class BinaryTree<E>
         return this == null;
     }
     
-    public BinaryTree addElements(BinaryTree root, ArrayList<String> commands)
+    public BinaryTree addElements(BinaryTree root, ArrayList<Association> commands)
     {
         BinaryTree root2;
-        for(String a : commands)
+        for(Association a : commands)
         {
             if(root.val == null)
             {
@@ -122,9 +116,8 @@ public class BinaryTree<E>
                 while(!next)
                 {
                     BinaryTree temp = new BinaryTree(a);
-                    //temp.setParent(root);
                 
-                    if(String.valueOf(root2.val).substring(1,2).charAt(0) > a.substring(1,2).charAt(0))
+                    if(String.valueOf(root2.val.getKey()).substring(0,1).charAt(0) > String.valueOf(a.getKey()).substring(0,1).charAt(0))
                     {
                         if(root2.left.val == null) 
                         {
@@ -158,7 +151,7 @@ public class BinaryTree<E>
         if (bst.val != null) 
         {
             traverseInOrder(bst.left);
-            System.out.print(" " + bst.val);
+            System.out.print("(" + bst.val.getKey() + ", " + bst.val.getValue() + ")");
             traverseInOrder(bst.right);
         }
     }
@@ -166,7 +159,7 @@ public class BinaryTree<E>
     public boolean contains(BinaryTree current, String value) 
     {
         if(current.val == null) return false;
-        if(value == current.val) return true;
+        //if(value == current.val) return true;
         return value.charAt(0) < String.valueOf(current.val).charAt(0) ? contains(current.left, value) : contains(current.right, value);
     }
 }
