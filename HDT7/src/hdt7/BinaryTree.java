@@ -1,8 +1,11 @@
 package hdt7;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Gerardo
+ * @param <E>
  */
 public class BinaryTree<E>
 {
@@ -42,6 +45,13 @@ public class BinaryTree<E>
     // post: returns reference to (possibly empty) left subtree
     {
         return left;
+    }
+    
+    public BinaryTree<E> right()
+    // post: returns reference to (possibly empty) left subtree
+    // post: returns reference to (possibly empty) left subtree
+    {
+        return right;
     }
 	
     public BinaryTree<E> parent()
@@ -89,5 +99,73 @@ public class BinaryTree<E>
     // post: sets the value associated with this node
     {
         val = value;
-    }	
+    }
+    
+    public boolean isEmpty()
+    {
+        return this == null;
+    }
+    
+    public BinaryTree addElements(BinaryTree root, ArrayList<String> commands)
+    {
+        BinaryTree root2;
+        for(String a : commands)
+        {
+            System.out.println("Val: " + root.val);
+            if(root.val == null)
+            {
+                System.out.println("Yo soy la raiz" + a);
+                root = new BinaryTree(a);
+            }
+            else
+            {
+                root2 = root;
+                boolean next = false;
+                while(!next)
+                {
+                    BinaryTree temp = new BinaryTree(a);
+                    //temp.setParent(root);
+                
+                    if(String.valueOf(root2.val).substring(1,2).charAt(0) > a.substring(1,2).charAt(0))
+                    {
+                        System.out.println(root2.left.val);
+                        if(root2.left.val == null) 
+                        {
+                            System.out.println("Yo soy hijo a la izquierda: " + a);
+                            root2.setLeft(temp);
+                            next = true;
+                        }
+                        else
+                        {
+                            root2 = root2.left();
+                        }
+                    }
+                    else
+                    {
+                        System.out.println(root2.right.val);
+                        if(root2.right.val == null)
+                        {
+                            System.out.println("Yo soy hijo a la derecha: " + a);
+                            root2.setRight(temp);
+                            next = true;
+                        }
+                        else
+                        {
+                            root2 = root2.right();
+                        }
+                    }
+                }                
+            }
+        }
+        return root;
+    }
+    
+    public void traverseInOrder(BinaryTree bst) {
+        if (bst.val != null) 
+        {
+            traverseInOrder(bst.left);
+            System.out.print(" " + bst.val);
+            traverseInOrder(bst.right);
+        }
+}
 }
