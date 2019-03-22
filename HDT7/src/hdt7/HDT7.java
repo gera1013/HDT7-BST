@@ -19,6 +19,7 @@ public class HDT7 {
     {
         BinaryTree bst = new BinaryTree(null);
         ArrayList<String> array = new ArrayList<>();
+        ArrayList<Association> asso = new ArrayList<>();
         Scanner read = new Scanner(new File("doc.txt"));
         read.useDelimiter("\\r\\n");
         String data;
@@ -31,7 +32,18 @@ public class HDT7 {
             }
         }
         
-        BinaryTree root = bst.addElements(bst, array);
+        for(String a : array)
+        {
+            a = a.replaceFirst("[(]", "");
+            a = a.replaceFirst(",", "");
+            a = a.replaceFirst("[)]", "");
+            System.out.println(a);
+            String [] b = a.split(" ");
+            Association novo = new Association(b[0], b[1]);
+            asso.add(novo);
+        }
+        
+        BinaryTree root = bst.addElements(bst, asso);
         
         System.out.println("");
         
