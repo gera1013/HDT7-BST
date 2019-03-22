@@ -111,10 +111,8 @@ public class BinaryTree<E>
         BinaryTree root2;
         for(String a : commands)
         {
-            System.out.println("Val: " + root.val);
             if(root.val == null)
             {
-                System.out.println("Yo soy la raiz" + a);
                 root = new BinaryTree(a);
             }
             else
@@ -128,10 +126,8 @@ public class BinaryTree<E>
                 
                     if(String.valueOf(root2.val).substring(1,2).charAt(0) > a.substring(1,2).charAt(0))
                     {
-                        System.out.println(root2.left.val);
                         if(root2.left.val == null) 
                         {
-                            System.out.println("Yo soy hijo a la izquierda: " + a);
                             root2.setLeft(temp);
                             next = true;
                         }
@@ -142,10 +138,8 @@ public class BinaryTree<E>
                     }
                     else
                     {
-                        System.out.println(root2.right.val);
                         if(root2.right.val == null)
                         {
-                            System.out.println("Yo soy hijo a la derecha: " + a);
                             root2.setRight(temp);
                             next = true;
                         }
@@ -167,5 +161,12 @@ public class BinaryTree<E>
             System.out.print(" " + bst.val);
             traverseInOrder(bst.right);
         }
-}
+    }
+    
+    public boolean contains(BinaryTree current, String value) 
+    {
+        if(current.val == null) return false;
+        if(value == current.val) return true;
+        return value.charAt(0) < String.valueOf(current.val).charAt(0) ? contains(current.left, value) : contains(current.right, value);
+    }
 }
