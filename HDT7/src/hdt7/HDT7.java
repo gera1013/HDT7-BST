@@ -33,8 +33,8 @@ public class HDT7 {
         
         BinaryTree root = bst.addElements(bst, array);
         
-        //System.out.println("");
+        System.out.println("");
         
-        //bst.traverseInOrder(root);
+        bst.traverseInOrder(root);
     }
 }
